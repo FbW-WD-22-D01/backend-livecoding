@@ -33,4 +33,22 @@ async function addPost(req, res) {
     
 }
 
-export {getPosts, addPost}
+async function getPostById(req, res){
+    const {id} = req.params;
+    try {
+        if (id){
+            let post = await Post.getById(id)
+    
+            res.status(200).json(post)
+
+        }else{
+            res.status(400);
+            return Promise.reject(new Error('Forgot title or/and content'));
+        }
+    } catch(err){
+        // Internal Server Error 500
+        res.status(500);
+    }
+}
+
+export {getPosts, addPost, getPostById}

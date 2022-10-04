@@ -5,7 +5,7 @@ dotenv.config();
 import Post from './src/model/post.js'
 
 // CONTROLLERS
-import { getPosts, addPost } from "./src/controller/articlesController.js";
+import { getPosts, addPost, getPostById } from "./src/controller/articlesController.js";
 
 
 const app = express();
@@ -20,6 +20,8 @@ app.get('/posts', getPosts)
           // Route // Controller
 //app.get('/posts', getPosts)
 app.get('/post/add', addPost)
+
+app.get('/post/:id', getPostById);
 
 app.listen(port, () => {
   console.log("Server listening on port:", port);

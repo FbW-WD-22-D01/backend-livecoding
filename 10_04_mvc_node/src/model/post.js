@@ -22,4 +22,14 @@ Post.get = async () => {
     }
 };
 
+// GET POST BY ID
+Post.getById = async (id) => {
+    try {
+        const data = await db.data.posts.find(post => post.id === id);
+        return data
+    } catch(err) {
+        return Promise.reject(new Error(err));
+    }
+};
+
 export default Post;

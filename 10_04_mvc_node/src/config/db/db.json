@@ -1,8 +1,14 @@
 {
   "posts": [
     {
+      "id": "1",
       "title": "hello world",
       "content": "My first content"
+    },
+    {
+      "id": "2",
+      "title": "2hello world",
+      "content": "2My first content"
     }
   ]
 }
