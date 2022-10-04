@@ -17,4 +17,6 @@ await db.read();
 db.data ||= { posts: [] }
 // db.data = db.data || { posts: [] } // for node < v15.x
 
+
+
 export default db;

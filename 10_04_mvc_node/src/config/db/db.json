@@ -1,8 +1,8 @@
 {
-    "posts": [ 
-        {
-            "title": "hello world", 
-            "contnet": "My first content" 
-        }
-    ]
+  "posts": [
+    {
+      "title": "hello world",
+      "content": "My first content"
+    }
+  ]
 }
