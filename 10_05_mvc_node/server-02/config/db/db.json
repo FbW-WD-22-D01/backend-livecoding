@@ -1,0 +1,50 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "title": "Suppe",
+      "content": "Beschreibung"
+    },
+    {
+      "id": 2,
+      "title": "Kuchen",
+      "content": "Beschreibung"
+    },
+    {
+      "id": 3,
+      "title": "Sandwich",
+      "content": "Beschreibung"
+    },
+    {
+      "id": "bdb85fd9-0fed-4a57-a630-7ccb8406829e",
+      "title": "Steak",
+      "content": "Eine beschreibung zum Rezept"
+    },
+    {
+      "id": "29d73e6d-8336-42dd-b5e0-469d66df9d10",
+      "title": "Steak2",
+      "content": "Eine beschreibung zum Rezept"
+    },
+    {
+      "id": "46050604-8036-4574-89d1-1802beef8f71",
+      "title": "Steak2"
+    },
+    {
+      "id": "2a78b084-2452-4a2a-baa7-007466bfefaf",
+      "title": "Steak0"
+    },
+    {
+      "id": "1f65c201-3c38-43a6-9acf-44e6f420c83a",
+      "content": "Steak0"
+    },
+    {
+      "id": "14318bf9-e47f-4ced-a5e3-791ca83a0e19",
+      "title": "Steak4",
+      "content": "Eine beschreibung zum Rezept"
+    },
+    {
+      "id": "dad04b02-56e6-4625-9010-22ef26423fc7",
+      "content": "Eine beschreibung zum Rezept"
+    }
+  ]
+}
