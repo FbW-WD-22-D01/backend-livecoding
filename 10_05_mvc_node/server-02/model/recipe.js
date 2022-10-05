@@ -14,4 +14,10 @@ Recipe.create = async (title, content) => {
 
 }
 
+Recipe.get = async () => {
+
+    const {recipes} = db.data
+    return recipes;
+}
+
 export default Recipe;

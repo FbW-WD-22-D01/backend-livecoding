@@ -1,7 +1,7 @@
 
 import  Recipe from '../model/recipe.js';
 
-async function getRecipes(req, res) {
+async function addRecipes(req, res) {
     try{
         const {title, content} = await req.body;
         if(!title && content ){
@@ -22,4 +22,10 @@ async function getRecipes(req, res) {
         res.status(500);
     }
 }
-export {getRecipes}
+
+async function getRecipes(req, res){
+    const recipes = await Recipe.get();
+
+    res.status(200).json(recipes);
+}
+export {addRecipes,getRecipes}
