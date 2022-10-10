@@ -6,6 +6,7 @@ function checkUser(req, res, next){
 
     if (username !== data.users[0].username || password !== data.users[0].password){
         next(new Error("Username or password wrong"));
+        return;
     }
     next();
 }
