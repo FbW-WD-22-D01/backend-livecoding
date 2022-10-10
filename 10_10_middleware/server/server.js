@@ -29,7 +29,7 @@ app.post('/login', checkUser , loginUser);
 // Error handling middleware
 app.use((error, req, res) => {
   console.log(error);
-  res.send(error);
+  res.status(400).send(error);
 });
 
 // Server Application on given port

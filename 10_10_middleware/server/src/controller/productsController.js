@@ -17,7 +17,7 @@ async function insertProduct(req, res) {
     const createdProduct = await Product.create({id, title, content, price});
 
     // SEND RESPONSE TO CLIENT WITH SUCCESS MESSAGE AND CREATED PRODUCT
-    res.json({msg: 'Das Produk wurde erfolgreich erstellt.', product: createdProduct})
+    res.json({msg: 'Das Produkt wurde erfolgreich erstellt.', product: createdProduct})
 }
 
 async function getProducts(req, res){
