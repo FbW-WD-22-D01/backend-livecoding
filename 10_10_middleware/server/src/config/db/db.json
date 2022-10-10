@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Product Title 1",
+      "content": "My first product",
+      "price": 2.12
+    },
+    {
+      "id": "2",
+      "title": "Product Title 2",
+      "content": "My second product",
+      "price": 2.5
+    },
+    {
+      "id": "4dbc3ac9-98c4-4990-9e40-47c5279ce695",
+      "title": "Mein Produkt",
+      "content": "Eine super Produkt Beschreibung",
+      "price": 2.5
+    },
+    {
+      "id": "9dc51ff4-3bfe-4809-83f0-1923206ee99b",
+      "title": "Mein Produkt 2",
+      "content": "Eine super Produkt Beschreibung",
+      "price": 2.5
+    },
+    {
+      "id": "2e74a1e0-4c1e-4ede-a1ba-dafb5fe80b44",
+      "title": "Mein Produkt 2",
+      "content": "Eine super Produkt Beschreibung",
+      "price": 2.5
+    }
+  ]
+}
