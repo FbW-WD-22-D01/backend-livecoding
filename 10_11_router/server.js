@@ -11,26 +11,6 @@ const app = express();
 
 app.use(express.json());
 
-// app.get("/", (req, res) => {
-//     res.send('Hallo Welt');
-// })
-
-// app.post("/sendMessage",(req, res, next) => {
-//     const {topic, content} = req.body;
-//     if (topic && content){
-//         next();
-//     }else{
-//         const error = new Error('Topic or content undefined');
-//         error.status = 400;
-//         next(error);
-//     }
-
-// }, (req, res) => {
-//     const {topic, content} = req.body;
-
-//     res.status(200).send(`<h1>${topic}</h1><p>${content}</p>`);
-// })
-
 // ATTENTION! If next argument is not defined the error-handler cant go on
 
 app.get("/products", getAllProducts);
