@@ -1,10 +1,15 @@
 import express from "express";
+// ### CONSTANTS ###
 import {local} from './src/config/constants.js'
-import { getAllProducts, getProductById, addProduct } from "./src/controller/productController.js";
-import errorHandler from "./src/middleware/errorHandler.js";
-import {checkValidId, checkValidProduct} from './src/middleware/product.js';
-import { Product } from "./src/model/product.js";
+
+// ### MIDDLEWARE ###
 import cors from 'cors'
+// Error Handler
+import errorHandler from "./src/middleware/errorHandler.js";
+
+// ### ROUTER ###
+import { productRouter } from "./src/route/productsRouter.js";
+
 // CONSTANTS
 const {PORT} = local;
 
@@ -17,14 +22,8 @@ app.use(cors({
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }));
 
-// ATTENTION! If next argument is not defined the error-handler cant go on
-
-app.get("/products", getAllProducts);
-
-app.get("/products/:id", checkValidId,  getProductById);
-
-app.post("/products/add", checkValidProduct, addProduct)
-
+// ROUTES
+app.use("/products", productRouter)
 
 
 app.use(errorHandler)

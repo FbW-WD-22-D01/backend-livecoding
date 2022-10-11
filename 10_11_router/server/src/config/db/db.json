@@ -41,6 +41,30 @@
       "name": "Unser erstes Produkt 2",
       "description": "Ein tolles Produkt",
       "price": "3.00€"
+    },
+    {
+      "id": "283d2c21-0363-43d6-8ab9-5db968126a1b",
+      "name": "Unser erstes Produkt 2",
+      "description": "Ein tolles Produkt",
+      "price": "3.00€"
+    },
+    {
+      "id": "4a430861-fbe6-467b-b244-980d760e34f3",
+      "name": "Unser erstes Produkt 2",
+      "description": "Ein tolles Produkt",
+      "price": "3.00€"
+    },
+    {
+      "id": "5ecb1907-e853-4a9f-99d1-e460ba7bd0e0",
+      "name": "Unser erstes Produkt 2",
+      "description": "Ein tolles Produkt",
+      "price": "3.00€"
+    },
+    {
+      "id": "aae48f87-a94d-43cd-9dc0-3a1a3b0af2e8",
+      "name": "Unser erstes Produkt 2",
+      "description": "Ein tolles Produkt",
+      "price": "3.00€"
     }
   ]
 }
