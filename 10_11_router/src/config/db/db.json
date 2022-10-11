@@ -1,0 +1,10 @@
+{
+    "products": [
+        {
+            "id": "fnskdfnjsidfjnisdfj",
+            "name": "Nintendo",
+            "description": "Artikelbeschreibung",
+            "price": "100.00€"
+        }
+    ]
+}
