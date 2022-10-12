@@ -22,15 +22,18 @@
 - standard ports (connection to networking and cryptography):
   - http  - port 80
   - https - port 443
-- user agent
+- user agent (HTTP-Client)
   - browser (Firefox, Chrome, Chromium, Edge, Safari, lynx)
-  - web crawler (wget, ...)
+  - Postman
+  - web crawler (wget, curl, ...)
   - mobile apps
   - ...
 - message
   - status
   - headers
+    - encoding
     - Set-Cookie
+    - ...
   - body
 - Tim Berners-Lee (1991, CERN)
 - Roy Fielding
