@@ -1,7 +1,11 @@
 # Workshop
 
-## Hypertext Transfer Protocol
-[**HTTP**](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+## HTTP - Hypertext Transfer Protocol
+(Wikipedia:
+  [ENG](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol),
+  [DEU](https://de.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+)
+
 - HTTP-Versions
   - [RFC 2616 - HTTP/1.1 (IETF)](https://datatracker.ietf.org/doc/html/rfc2616)
   - until and including [HTTP/2](https://en.wikipedia.org/wiki/HTTP/3) run over TCP
@@ -51,7 +55,12 @@
 
 ---
 
-### [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+### HTTP Status Codes 
+(Wikipedia: 
+  [ENG](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes), 
+  [DEU](https://de.wikipedia.org/wiki/HTTP-Statuscode)
+)
+
   - 1xx - informational response
   - 2xx - success
     - 200 OK
@@ -80,10 +89,21 @@
     - 501 Not Implemented
     - 502 Bad Gateway
 
-### [URL (wikipedia)](https://en.wikipedia.org/wiki/URL)
+---
+---
+
+### URL - Uniform Resource Locator
+(Wikipedia: 
+  [ENG](https://en.wikipedia.org/wiki/URL),
+  [DEU](https://de.wikipedia.org/wiki/Uniform_Resource_Locator)
+)
+
 Uniform Resource Locator
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/URI_syntax_diagram.svg/1280px-URI_syntax_diagram.svg.png)
+
+---
+---
 
 ## Architecture of a Web Application 
 
