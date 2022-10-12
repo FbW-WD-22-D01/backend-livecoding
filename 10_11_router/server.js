@@ -1,8 +1,7 @@
 import express from "express";
 import {local} from './src/config/constants.js'
-import { getAllProducts, getProductById, addProduct} from "./src/controller/productController.js";
 import errorHandler from "./src/middleware/errorHandler.js";
-import {checkValidId, checkValidProduct} from './src/middleware/product.js';
+import { productRouter } from "./src/router/productRouter.js";
 
 // CONSTANTS
 const {PORT} = local;
@@ -12,16 +11,11 @@ const app = express();
 
 app.use(express.json());
 
-// ATTENTION! If next argument is not defined the error-handler cant go on
 
-app.get("/products", getAllProducts);
+// Product route
+app.use("/products", productRouter);
 
-app.get("/products/:id", checkValidId,  getProductById);
-
-app.post("/products/add", checkValidProduct, addProduct)
-
-
-
+// Error Handler
 app.use(errorHandler)
 
 // SERVER EXPRESS ON DEFINED PORT
