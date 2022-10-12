@@ -1,6 +1,6 @@
 import {validate as uuidValidate} from 'uuid'
 
-function checkValidId(req, res, next){
+export function checkValidId(req, res, next){
     // 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
     const {id} = req.params;
    if(uuidValidate(id) === true){
@@ -14,6 +14,21 @@ function checkValidId(req, res, next){
             next(error)
         }
    };
-
 }
-export {checkValidId}
+
+
+export async function checkValidProduct(req, res, next) {
+    // "name": "Nintendo",
+    // "description": "Artikelbeschreibung",
+    // "price": "100.00€"
+    const {name, description, price} = req.body;
+
+    if(name && description && price){
+        next();
+    }else {
+        const error = new Error('Name, description or price not Found')
+        error.status = 404;
+        next(error);
+    }
+    
+}

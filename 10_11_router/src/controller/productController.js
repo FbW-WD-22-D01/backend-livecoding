@@ -18,4 +18,15 @@ async function getProductById(req, res){
         res.status(404).send("Produkt konnte nicht gefunden werden");
     }
 }
-export {getAllProducts, getProductById}
+
+async function addProduct(req, res) {
+    // "name": "Nintendo",
+    // "description": "Artikelbeschreibung",
+    // "price": "100.00€"
+    const {name, description, price} = req.body;
+    const product = Product.create(name, description, price);
+    res.status(200).json(product) 
+}
+
+
+export {getAllProducts, getProductById, addProduct}
