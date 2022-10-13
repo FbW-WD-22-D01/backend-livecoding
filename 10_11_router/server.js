@@ -8,7 +8,7 @@ import cors from 'cors'
 import errorHandler from "./src/middleware/errorHandler.js";
 
 // ### ROUTER ###
-import { productRouter } from "./src/route/productsRouter.js";
+import { productRouter } from "./src/router/productRouter.js";
 
 // CONSTANTS
 const {PORT} = local;

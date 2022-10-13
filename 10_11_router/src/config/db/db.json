@@ -65,6 +65,18 @@
       "name": "Unser erstes Produkt 2",
       "description": "Ein tolles Produkt",
       "price": "3.00€"
+    },
+    {
+      "id": "26ef5e19-3869-40a3-af4b-3aa35053b8b9",
+      "name": "Unser erstes Produkt 2",
+      "description": "Ein tolles Produkt",
+      "price": "3.00€"
+    },
+    {
+      "id": "973de1e8-baaf-4fdb-a10c-175f116dcbd5",
+      "name": "Unser erstes Produkt 2",
+      "description": "Ein tolles Produkt",
+      "price": "3.00€"
     }
   ]
 }

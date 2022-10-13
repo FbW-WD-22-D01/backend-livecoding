@@ -1,6 +1,6 @@
 import {validate as uuidValidate} from 'uuid'
 
-function checkValidId(req, res, next){
+export function checkValidId(req, res, next){
     // 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
     const {id} = req.params;
    if(uuidValidate(id) === true){
@@ -9,17 +9,17 @@ function checkValidId(req, res, next){
         if(process.env.NODE_ENV === "production"){
             const error = new Error("Error occured, take a look at your server logs!");
             error.status = 500;
-            next(error);
+            next(error);        
         }else {
             const error = new Error('Die id hat nicht das korrekte Format!');
             error.status = 400;
             next(error)
         }
    };
-
 }
 
-async function checkValidProduct(req, res, next) {
+
+export async function checkValidProduct(req, res, next) {
     // "name": "Nintendo",
     // "description": "Artikelbeschreibung",
     // "price": "100.00€"
@@ -34,5 +34,3 @@ async function checkValidProduct(req, res, next) {
     }
     
 }
-
-export {checkValidId, checkValidProduct}
