@@ -24,7 +24,9 @@ async function addProduct(req, res) {
     // "description": "Artikelbeschreibung",
     // "price": "100.00€"
     const {name, description, price} = req.body;
+
     const product = await Product.create(name, description, price);
+
     res.status(200).json(product) 
 }
 
