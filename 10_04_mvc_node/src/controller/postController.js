@@ -13,12 +13,13 @@ function getPosts(req, res) {
 }
 
 async function addPost(req, res) {
-    let {title, content} = req.query;
+    let {title, content} = req.body;
     try {
+        // IF TITLE AND CONTENT ARE NOT UNDEFINED
          if (title && content){
-            let post = await Post.create(title, content)
-    
-            res.status(200).json(post)
+        // ADDS A POST TO THE DATABASE
+            await Post.create(title, content)
+            res.status(200).json({title, content})
 
         }else{
             res.status(400);

@@ -7,7 +7,9 @@ function checkValidId(req, res, next){
         next();
    }else{
         if(process.env.NODE_ENV === "production"){
-            res.status(500).send("Error occured, take a look at your server logs!");
+            const error = new Error("Error occured, take a look at your server logs!");
+            error.status = 500;
+            next(error);
         }else {
             const error = new Error('Die id hat nicht das korrekte Format!');
             error.status = 400;
