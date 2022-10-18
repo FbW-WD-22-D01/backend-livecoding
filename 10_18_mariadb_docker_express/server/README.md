@@ -1,9 +1,9 @@
 # Docker mysql/ setup
 
 ## Docker installation
-[Docker Desktop Linux Installation]("https://docs.docker.com/desktop/install/linux-install/")
+[Docker Desktop Linux Installation](https://docs.docker.com/desktop/install/linux-install/)
 
-[Docker Compose Linux Installation]("https://docs.docker.com/compose/install/linux/")
+[Docker Compose Linux Installation](https://docs.docker.com/compose/install/linux/)
 
 ### ATTENTION!!!
 Dont forget to add your user to the docker group, so you dont have to run docker as a root!
@@ -40,4 +40,4 @@ VALUES(‘Christoph’,’christoph@dci.org’,’ADMIN’,’passwd’);
 ```
 
 # Ressourcen
-[Was ist Docker?]("https://www.opc-router.de/was-ist-docker/")
+[Was ist Docker?](https://www.opc-router.de/was-ist-docker/)
