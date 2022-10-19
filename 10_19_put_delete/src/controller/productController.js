@@ -42,12 +42,18 @@ async function updateProductById(req, res) {
 
 }
 
-async function deleteProductById(req, res){
+async function deleteProductById(req, res, next){
     const {id} = req.params;
 
     const deletedProduct = await Product.delete(id);
 
-    res.status(200).json(deletedProduct)
+    if(deletedProduct){
+        res.status(200).json(deletedProduct)
+    }else {
+     const error = new Error("Das Produkt mit der ID: " + id + " existiert nicht.")
+     error.status = 404;
+     next(error);
+    }
 
 }
 

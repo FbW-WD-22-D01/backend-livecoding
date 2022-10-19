@@ -18,7 +18,6 @@ export function checkValidId(req, res, next){
    };
 }
 
-
 export async function checkValidProduct(req, res, next) {
     // "name": "Nintendo",
     // "description": "Artikelbeschreibung",

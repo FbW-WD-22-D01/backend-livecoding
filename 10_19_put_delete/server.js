@@ -17,6 +17,7 @@ const {PORT} = local;
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(cors({
     origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204

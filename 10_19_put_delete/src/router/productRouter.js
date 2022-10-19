@@ -1,4 +1,4 @@
-import { Router } from "express";
+import {Router} from "express";
 import { checkValidId, checkValidProduct } from "../middleware/product.js";
 import { getAllProducts, getProductById, addProduct, updateProductById, deleteProductById } from "../controller/productController.js";
 

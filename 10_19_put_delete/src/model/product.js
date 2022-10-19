@@ -49,10 +49,16 @@ Product.delete = async (id) => {
 
     const productIndex = db.data.products.findIndex(product => product.id === id);
 
-    const deletedProducts = db.data.products.splice(productIndex, 1);
-
-    await db.write();
-    return deletedProducts[0];
+    // If productIndex could not be found then findIndex returns -1 
+    // So it doesnt slices the last Element in the products arrays, 
+    // we have to check if productIndex doesnt return -1 before trying to delete the product
+    if(productIndex != -1){
+        const deletedProducts = db.data.products.splice(productIndex, 1);
+        await db.write();
+        return deletedProducts[0];
+    } else {
+        return false;
+    }
 
 }
 
