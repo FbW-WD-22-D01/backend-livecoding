@@ -1,6 +1,10 @@
 {
   "scripts": {
-    "start": "node server.js"
+    "prod": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
+    "database": "docker compose -f ./src/config/mariadb/docker-compose.yml up",
+    "import-db": "docker exec -i database mysql -uroot --password=root dci_db < ./dump/dci_db.sql",
+    "export-db": "docker exec database /usr/bin/mysqldump -uroot --password=root dci_db > ./dump/dci_db.sql"
   },
   "name": "docker-mariadb",
   "description": "## Docker installation [Docker Desktop Linux Installation](\"https://docs.docker.com/desktop/install/linux-install/\")",
@@ -8,12 +12,14 @@
   "main": "server.js",
   "type": "module",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "ejs": "^3.1.8",
     "express": "^4.18.2",
     "mariadb": "^3.0.1"
   },
-  "devDependencies": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

@@ -1,6 +1,6 @@
 import {validate as uuidValidate} from 'uuid'
 
-export function checkValidId(req, res, next){
+function checkValidId(req, res, next){
     // 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
     const {id} = req.params;
    if(uuidValidate(id) === true){
@@ -18,7 +18,7 @@ export function checkValidId(req, res, next){
    };
 }
 
-export async function checkValidProduct(req, res, next) {
+function checkValidProduct(req, res, next) {
     // "name": "Nintendo",
     // "description": "Artikelbeschreibung",
     // "price": "100.00€"
@@ -33,3 +33,4 @@ export async function checkValidProduct(req, res, next) {
     }
     
 }
+export { checkValidId, checkValidProduct}
