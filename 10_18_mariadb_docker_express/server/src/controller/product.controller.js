@@ -23,38 +23,38 @@ async function addProduct(req, res) {
     // "description": "Artikelbeschreibung",
     // "price": "100.00€"
     const {name, description, price} = req.body;
-    let createdProduct = await Product.create(name, description, price);
+    await Product.create(name, description, price);
     
-    res.status(200).json(createdProduct) 
+    res.status(200).json({msg: "Product successfully inserted", name, description, price}) 
 }
 
-// async function updateProductById(req, res) {
-//     const {id} = req.params;
+async function updateProductById(req, res) {
+    const {id} = req.params;
     
-//     const {newProduct} = req.body;
+    const {newProduct} = req.body;
     
-//     console.log(newProduct);
-//     const product = await Product.update(id, newProduct);
+    console.log(newProduct);
+    const product = await Product.update(id, newProduct);
         
-//     res.status(200).json(product)
+    res.status(200).json({msg: "updated successfully", ...product})
 
-// }
+}
 
-// async function deleteProductById(req, res, next){
-//     const {id} = req.params;
+async function deleteProductById(req, res, next){
+    const {id} = req.params;
 
-//     const deletedProduct = await Product.delete(id);
+    const deletedProductMessage = await Product.delete(id);
 
-//     if(deletedProduct){
-//         res.status(200).json(deletedProduct)
-//     }else {
-//      const error = new Error("Das Produkt mit der ID: " + id + " existiert nicht.")
-//      error.status = 404;
-//      next(error);
-//     }
+    if(deletedProductMessage){
+        res.status(200).json(deletedProductMessage)
+    }else {
+     const error = new Error("Das Produkt mit der ID: " + id + " existiert nicht.")
+     error.status = 404;
+     next(error);
+    }
 
-// }
+}
 
 
 
-export {addProduct, getAllProducts, getProductById}
+export {addProduct, getAllProducts, getProductById, updateProductById, deleteProductById}
