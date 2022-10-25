@@ -45,6 +45,10 @@ npx prisma migrate dev --name init
 
 When `npx prisma migrate dev` is executed against a newly created database, seeding is also triggered.  The seed file in [`prisma/seed.js`](./prisma/seed.js) will be executed and your database will be populated with the sample data.
 
+In case you want to execute the seed.js in the prisma folder run 
+```
+npx prisma db seed
+```
 
 ### 3. Start the REST API server
 

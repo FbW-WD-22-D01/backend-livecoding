@@ -1,0 +1,18 @@
+services:
+
+  db:
+    image: mariadb
+    container_name: database
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: prisma_db
+    ports:
+      - 33006:3306
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
