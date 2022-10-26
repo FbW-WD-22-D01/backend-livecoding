@@ -17,6 +17,18 @@ export default function User() {
   const {userId} = useParams(); 
 
   const [userData, setUserData] = useState(null);
+/*
+{
+  _id 635919a460a7733816b73551,
+  firstname "Philine" ,
+  lastname"Riediger",
+  email "Philine.Riediger@hotmail.com",
+  isAdmin true,
+  address 'Adress',
+  otherAddr ['Adress 1','Adress 2',]
+}
+*/
+  
 
   useEffect(() => {
     api.get(`/user/${userId}`).then(res => {
@@ -35,6 +47,9 @@ export default function User() {
   if(!userData) return (<div>No user data</div>)
 
   return (
-    <div>User: {userData.firstname}</div>
+    <div>
+      <p>User: {userData.firstname}</p>
+      <h1 className="text-3xl">TEST</h1>
+    </div>
   )
 }
