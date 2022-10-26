@@ -16,7 +16,8 @@ export async function showUserById(req, res, next){
         const user = await Customer.findById(req.params.userid)
         res.send(user)
     }catch (error){
-        console.log(err)
+        console.log(error)
+        //todo: add next and write error to file with date and time in glibal middleware error handler 
         res.send('Fehler')
     }
 }
