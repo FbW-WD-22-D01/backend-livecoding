@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 
 import {Route, Routes} from 'react-router-dom';
-import User from './pages/User';
+import Profile from './pages/Profile';
+import Users from './pages/Users';
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/user/:userId" element={<User/>}/>
+        <Route path="/profile/:userId" element={<Profile/>}/>
+        <Route path="/users" element={<Users/>}/>
       </Routes>
     </>
   )
