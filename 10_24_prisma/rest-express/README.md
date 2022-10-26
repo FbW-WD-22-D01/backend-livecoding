@@ -35,11 +35,12 @@ npm install
 
 </details>
 
-### 2. Create and seed the database
+### 2. Start, create and seed the database
 
-Run the following command to create your SQLite database file. This also creates the `User` and `Post` tables that are defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
+Run the following commands to start and create your mysql database. This also creates the `User` and `Post` tables that are defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
 
 ```
+npm run db
 npx prisma migrate dev --name init
 ```
 

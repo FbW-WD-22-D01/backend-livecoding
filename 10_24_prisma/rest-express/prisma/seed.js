@@ -23,11 +23,12 @@ const userData = Array(200).fill(null).map(() => (
 
 async function main() {
   console.log(`Start seeding ...`)
-  for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u,
+    const createdUser = await prisma.user.createMany({
+      data: userData,
+      skipDuplicates: true, 
     })
-    console.log(`Created user with id: ${user.id}`)
+  for (const u of createdUser) {
+    console.log('Creating user with id: ', u.id);
   }
   console.log(`Seeding finished.`)
 }
