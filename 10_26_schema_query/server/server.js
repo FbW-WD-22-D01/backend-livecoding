@@ -2,6 +2,7 @@ import './config/config.js'
 import express from 'express'
 import { showAllUsers, showUserById } from './controller/customer.js'
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 // aUFGABE rOUTE DIE UnS ALLE uSER ZEIGT
 // User suchen nach id
@@ -20,6 +21,10 @@ mongoose
 
 // Middleware einstellen
 app.use(express.json())
+app.use(cors({
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }))
 
 app.get('/users', showAllUsers)
 app.get('/user/:userid', showUserById)
