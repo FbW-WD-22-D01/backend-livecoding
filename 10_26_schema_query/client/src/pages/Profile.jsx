@@ -33,7 +33,7 @@ export default function Profile() {
   
 
   useEffect(() => {
-    api.get(`/user/${userId}`).then(res => {
+    api.get(`/user/read/${userId}`).then(res => {
 
       setUserData(res.data);
       console.log(res);
