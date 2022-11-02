@@ -3,7 +3,21 @@ import httpErrors from 'http-errors'
 
 /** @type {import("express").RequestHandler} */
 export async function getAllRecords (req, res, next) {
-  const records = await Record.find()
+  const limit = Number(req.query.limit)
+  const skip = Number(req.query.skip)
+  const minPrice = Number(req.query.minPrice)
+  const maxPrice = Number(req.query.maxPrice)
+  const genre = req.query.genre
+  let query = Record.find()
+
+  if(limit) query = query.limit(limit)
+  if(skip) query = query.skip(skip)
+  if(minPrice) query = query.gte('price', minPrice)
+  if(maxPrice) query = query.lte('price', maxPrice)
+  if(genre) query = query.where('genre').equals(genre)
+
+  const records = await query
+
   res.status(200).send(records)
 }
 
