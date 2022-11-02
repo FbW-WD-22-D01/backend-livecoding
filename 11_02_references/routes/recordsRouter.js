@@ -11,7 +11,11 @@ const app = express.Router()
 app.route('/')
   .get(controller.getAllRecords)
   .post(controller.createRecord)
+  
+
+// app.get('/by-title/:title', controller.getRecordById)
 
 app.get('/:id', controller.getRecordById)
+
 
 export default app
