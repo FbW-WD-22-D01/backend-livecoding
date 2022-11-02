@@ -1,5 +1,10 @@
 import express from 'express'
 
+/**
+ * dadurch brauchen wir kein try-catch mehr bei async middlewares
+ */
+import 'express-async-errors'
+
 const app = express.Router()
 
 app.route('/')
@@ -18,7 +23,9 @@ app.route('/')
 //   res.status(200).send('delete')
 // })
 
-app.get('/:id', (req, res, next) => {
+app.get('/:id', async (req, res, next) => {
+  const n = 0
+  n.toUpperCase()
   res.status(200).send('ok')
 })
 

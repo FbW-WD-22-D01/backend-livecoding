@@ -1,5 +1,6 @@
 import express from 'express'
 import recordsRouter from './routes/recordsRouter.js'
+import 'express-async-errors'
 
 const app = express()
 
@@ -18,6 +19,13 @@ const app = express()
 // })
 
 app.use('/records', recordsRouter)
+
+app.use((req, res, next) => {
+  next({
+    status: 404,
+    message: 'not-found'
+  })
+})
 
 // app.get('/records/:id', (req, res, next) => {
 //   throw new Error('my error')
