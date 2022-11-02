@@ -11,6 +11,10 @@ app.route('/')
   .get((req, res, next) => {
     res.status(200).send('ok')
   })
+  .post((req, res, next) => {
+    console.log(req.body)
+    res.status(200).send('post')
+  })
   .delete((req, res, next) => {
     res.status(200).send('delete')
   })

@@ -1,6 +1,7 @@
 import express from 'express'
 import recordsRouter from './routes/recordsRouter.js'
 import 'express-async-errors'
+import cors from 'cors'
 
 const app = express()
 
@@ -18,7 +19,16 @@ const app = express()
 //   }
 // })
 
+// regelt die kommunikation zwischen BROWSER und Server. nur wenn die aktuelle
+// url des Browsers gewhitelistet ist, darf der browser die antwort lesen
+app.use(cors({
+  origin: '*'
+}))
+
+app.use(express.json())
+
 app.use('/records', recordsRouter)
+
 
 app.use((req, res, next) => {
   next({
