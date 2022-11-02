@@ -2,22 +2,16 @@ import express from 'express'
 import recordsRouter from './routes/recordsRouter.js'
 import 'express-async-errors'
 import cors from 'cors'
+import mongoose from 'mongoose'
+import * as dotenv from 'dotenv'
+dotenv.config()
+
+mongoose.connect(process.env.DB_CONN)
+  .then(() => console.log('Datenbank läuft'))
+  .catch(() => console.log('Datenbank Verbindung fehlgeschlagen'))
 
 const app = express()
 
-// app.use((req, res, next) => {
-//   res.status(200).send('ok')
-//   // next()
-// })
-
-// app.use((req, res, next) => {
-//   if(req._parsedUrl.pathname.includes('/user')) {
-//     res.status(200).send('ok')
-//   }
-//   else {
-//     next()
-//   }
-// })
 
 // regelt die kommunikation zwischen BROWSER und Server. nur wenn die aktuelle
 // url des Browsers gewhitelistet ist, darf der browser die antwort lesen
@@ -48,4 +42,4 @@ app.use((error, req, res, next) => {
 })
 
 
-app.listen(3001, () => console.log('app listening on localhost:3001'))
+app.listen(process.env.PORT, () => console.log('app listening on localhost:3001'))
