@@ -26,3 +26,39 @@ export async function getOrderList(req, res) {
 
   res.status(200).send(orders)
 }
+
+/** @type {import("express").RequestHandler} */
+export async function patchOrder(req, res) {
+  const id = req.params.id
+
+  // const order = await Order.findByIdAndUpdate(id, req.body)
+  // order.runValidators()
+
+
+  let order = await Order.findById(id)
+  for(const key in req.body) {
+    order[key] = req.body[key]
+  }
+  await order.save()
+
+  res.status(200).send(order)
+}
+
+/*
+request: PATCH http://localhost:3001/orders/6363822c2b57970aafd9ef54
+request-body:
+{
+  "user": "6363978d67673ae428e9374b",
+  "comment": "Comment by Ali"
+}
+
+status: 200
+response:
+{
+  _id: "id",
+  comment: "Comment by Ali",
+  user: "6363978d67673ae428e9374b",
+  records: ["record-id1", "record-id2"],
+  __v: 1
+}
+*/
