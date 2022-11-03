@@ -9,6 +9,20 @@ export async function createOrder(req, res) {
 
 /** @type {import("express").RequestHandler} */
 export async function getOrderList(req, res) {
-  const orders = await Order.find().populate('records').populate('user')
+  // const orders = await Order.find()
+  //   .populate('records', '-_id -__v')
+  //   .populate('user', '-_id -__v')
+  //   .select('-_id -__v')
+  const userId = req.query.userId // '1'
+
+  let query = Order.find()
+
+  if(userId) query = query.where('user').equals(userId)
+  query = query.populate('records', '-_id -__v')
+  query = query.populate('user', '-_id -__v')
+  query = query.select('-__v')
+
+  const orders = await query
+
   res.status(200).send(orders)
 }

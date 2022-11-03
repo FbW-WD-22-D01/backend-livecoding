@@ -10,4 +10,4 @@ const Order = mongoose.model('Order', Schema, 'orders')
 
 export default Order
 
-// POST /order
+// GET /orders?userId=123214114
