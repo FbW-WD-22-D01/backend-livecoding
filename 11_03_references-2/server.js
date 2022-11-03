@@ -1,5 +1,7 @@
 import express from 'express'
 import recordsRouter from './routes/recordsRouter.js'
+import ordersRouter from './routes/ordersRouter.js'
+import usersRouter from './routes/usersRouter.js'
 import 'express-async-errors'
 import cors from 'cors'
 import mongoose from 'mongoose'
@@ -22,6 +24,8 @@ app.use(cors({
 app.use(express.json())
 
 app.use('/records', recordsRouter)
+app.use('/orders', ordersRouter)
+app.use('/users', usersRouter)
 
 
 app.use((req, res, next) => {

@@ -6,6 +6,6 @@ const Schema = mongoose.Schema({
   genre: { type:String, enum: ['Rock', 'Classic']}
 })
 
-const Model = mongoose.model('Record', Schema, 'records')
+const Record = mongoose.model('Record', Schema, 'records')
 
-export default Model
+export default Record
