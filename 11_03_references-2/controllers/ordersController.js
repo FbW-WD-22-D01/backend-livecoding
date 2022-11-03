@@ -36,6 +36,9 @@ export async function patchOrder(req, res) {
 
 
   let order = await Order.findById(id)
+
+  if(!order) throw httpErrors.NotFound(`orderId ${id} not found`)
+
   for(const key in req.body) {
     order[key] = req.body[key]
   }
