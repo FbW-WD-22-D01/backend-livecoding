@@ -39,7 +39,7 @@ export async function createNewMsg(req, res){
     user.messages.push(msg._id)
     await user.save()
   
-    await user.populate("messages", "content -_id")
+
     res.send({newMsg: msg, userUpdated: user})
 }
 
