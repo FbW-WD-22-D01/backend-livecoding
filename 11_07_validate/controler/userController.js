@@ -2,6 +2,7 @@ import User from "../models/users.js";
 import Message from '../models/messages.js'
 import httpErrors from 'http-errors'
 
+
 /** @type {import("express").RequestHandler} */
 export async function addUser(req, res){
    
@@ -13,11 +14,12 @@ export async function addUser(req, res){
         })
 }
 
+
+
 /** @type {import("express").RequestHandler} */
 export async function createNewMsg(req, res){
     // body = {content: 'Hallo', date: '2022-11-30', channel: 'allgemein'}
     const userId = req.params.id
-    
     
     // neue Message erstellen und userId eintragen
     const data = {
@@ -32,33 +34,32 @@ export async function createNewMsg(req, res){
     // msg.author = userId
     // await msg.save()
 
-
     // User suchen + messageId eintragen
     const user = await User.findById(userId)
     user.messages.push(msg._id)
-    
     await user.save()
-    
+  
     await user.populate("messages", "content -_id")
     res.send({newMsg: msg, userUpdated: user})
-
 }
+
+
 
 
 /** @type {import("express").RequestHandler} */
 export async function loginUser(req, res){
-    const {name, password} = req.body 
-    try{
-        const user = await User.find({name: name, password: password})
-        console.log(user)
-        if (!user) throw httpErrors.NotFound('User not found')
+    // Wenn zuvor keine Validierung geschieht, können hier unerwünschte Operationen z.B. nosql Attacken (siehe unten) ausgeführt werden
+    const {name, password} = req.body         
+    
+        const user = await User.findOne({name: name, password: password}).populate("messages", "content -_id")
+      
+        if (!user) throw httpErrors.Unauthorized()
+      
         res.send({
             message: 'Login successfull',
             user: user
         })
-    }catch(err) {
-        res.send({error: err.message})
-    }
 
 }
+// nosql Attack request: {"name": {"$gt": ""}, "password": {"$gt": ""}}
 
