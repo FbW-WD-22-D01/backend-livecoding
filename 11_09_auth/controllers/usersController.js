@@ -8,6 +8,22 @@ export async function createUser (req, res) {
 
 /** @type {import("express").RequestHandler} */
 export async function getUser(req, res, next) {
+  const token = req.headers['x-authorization']
+
+  const user = await User.findOne().where('token').equals(token)
+
+  if(!user) {
+    return next({
+      status: 401,
+      message: 'You shall not pass!'
+    })
+  }
+
+  res.status(200).send(user)
+}
+
+/** @type {import("express").RequestHandler} */
+export async function login (req, res, next) {
   // req.body.email
   // req.body.password
 
@@ -17,5 +33,9 @@ export async function getUser(req, res, next) {
     return next({status: 401, message: 'You shall not pass!'})
   }
 
-  res.status(200).send(user)
+  // erstelle zufälligen token. z.b: "ug1j1"
+  user.token = Math.random().toString(36).slice(2, 7)
+  await user.save()
+
+  res.status(200).send(user.token)
 }
