@@ -1,9 +1,12 @@
 import User from '../models/User.js'
+import bcrypt from 'bcrypt'
 
 /** @type {import("express").RequestHandler} */
 export async function createUser (req, res) {
-  const user = await User.create(req.body)
-  res.status(200).send(user)
+  const user = new User(req.body)
+  user.password = await bcrypt.hash(user.password, 10)
+  await user.save()
+  res.status(201).send(user)
 }
 
 /** @type {import("express").RequestHandler} */
@@ -29,7 +32,13 @@ export async function login (req, res, next) {
 
   const user = await User.findOne().where('email').equals(req.body.email)
 
-  if(!user || user.password !== req.body.password) {
+  if(!user) {
+    return next({status: 401, message: 'You shall not pass!'})
+  }
+
+  const passwordsAreEqual = await bcrypt.compare(req.body.password, user.password)
+
+  if(!passwordsAreEqual) {
     return next({status: 401, message: 'You shall not pass!'})
   }
 
