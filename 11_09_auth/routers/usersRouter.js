@@ -4,6 +4,8 @@ import 'express-async-errors'
 
 const app = express.Router()
 
+app.get('/', controller.getUser)
 app.post('/', controller.createUser)
+
 
 export default app
