@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import usersRouter from './routers/usersRouter.js'
 
 mongoose.connect('mongodb://localhost:27017/auth')
     .then(() => console.log('db up'))
@@ -8,6 +9,10 @@ mongoose.connect('mongodb://localhost:27017/auth')
   
     
 const app = express()
+
+app.use(express.json())
+
+app.use('/user', usersRouter)
 
 app.use((req, res, next) => {
   next({
