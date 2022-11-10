@@ -27,10 +27,25 @@ Schema.methods.checkPassword = async function (password) {
   return await bcrypt.compare(password, user.password)
 }
 
-Schema.methods.hashPassword = async function (password) {
+
+Schema.methods.toJSON = function () {
   const user = this
-  user.password = await bcrypt.hash(password, 10)
+  const result = {
+    name: user.name,
+    _id: user.id,
+    email: user.email,
+  }
+  return result
 }
+
+Schema.pre('save', async function (next) {
+  const user = this
+  if(user.isModified('password')) {
+    user.password = await bcrypt.hash(user.password, 10)
+  }
+
+  next()
+})
 
 const User = mongoose.model('User', Schema, 'users')
 

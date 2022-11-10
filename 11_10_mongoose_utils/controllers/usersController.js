@@ -1,11 +1,10 @@
 import User from '../models/User.js'
-import bcrypt from 'bcrypt'
 
 /** @type {import("express").RequestHandler} */
 export async function createUser (req, res) {
   const user = new User(req.body)
-  await user.hashPassword(user.password)
   await user.save()
+
   res.status(201).send(user)
 }
 
@@ -48,4 +47,33 @@ export async function login (req, res, next) {
   await user.save()
 
   res.status(200).send(user.token)
+}
+
+/** @type {import("express").RequestHandler} */
+export async function updateUser (req, res, next) {
+  const token = req.headers['x-authorization']
+  const user = await User.findByToken(token)
+  
+  if(!user) {
+    return next({
+      status: 401,
+      message: 'You shall not pass!'
+    })
+  }
+
+  if(req.body.name) {
+    user.name = req.body.name
+  }
+
+  if(req.body.password) {
+    user.password = req.body.password // 123456
+  }
+
+  if(req.body.email) {
+    user.email = req.body.email
+  }
+
+
+  await user.save()
+  res.status(200).send(user)
 }

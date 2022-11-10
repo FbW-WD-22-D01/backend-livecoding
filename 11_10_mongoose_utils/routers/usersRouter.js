@@ -7,6 +7,7 @@ const app = express.Router()
 app.get('/', controller.getUser)
 app.post('/register', controller.createUser)
 app.post('/login', controller.login)
+app.patch('/', controller.updateUser)
 
 
 export default app
