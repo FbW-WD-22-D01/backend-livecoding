@@ -10,18 +10,7 @@ export async function createUser (req, res) {
 
 /** @type {import("express").RequestHandler} */
 export async function getUser(req, res, next) {
-  const token = req.headers['x-authorization']
-
-  // const user = await User.findOne().where('token').equals(token)
-  const user = await User.findByToken(token)
-
-  if(!user) {
-    return next({
-      status: 401,
-      message: 'You shall not pass!'
-    })
-  }
-
+  const user = req.user
   res.status(200).send(user)
 }
 
@@ -51,15 +40,7 @@ export async function login (req, res, next) {
 
 /** @type {import("express").RequestHandler} */
 export async function updateUser (req, res, next) {
-  const token = req.headers['x-authorization']
-  const user = await User.findByToken(token)
-  
-  if(!user) {
-    return next({
-      status: 401,
-      message: 'You shall not pass!'
-    })
-  }
+  const user = req.user
 
   if(req.body.name) {
     user.name = req.body.name
