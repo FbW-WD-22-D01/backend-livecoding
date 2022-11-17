@@ -1,7 +1,7 @@
 import createHttpError from "http-errors"
 import Record from "../models/Record.js"
 
-export async function getRecords(req, res, next){
+export async function getRecords(req, res){
 
     const {min, max, band} = req.query
 

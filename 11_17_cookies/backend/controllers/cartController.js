@@ -1,7 +1,6 @@
-import mongoose from 'mongoose'
 import Cart from '../models/Cart.js'
 
-export async function addRecord(req, res, next) {
+export async function addRecord(req, res) {
     const user = req.user
     const {recordId, amount} = req.body
 
