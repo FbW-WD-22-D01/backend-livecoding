@@ -9,6 +9,14 @@ export default function Register () {
   const submit = (e) => {
     e.preventDefault()
     console.log('submit', {name, email, password})
+
+    fetch('http://localhost:3001/user/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name, password, email})
+    })
   }
 
   return (
