@@ -20,7 +20,7 @@ export async function createUser (req, res) {
 
 export async function login(req, res, next) {
   const user = await User.findByEmail(req.body.email)
-  console.log(user)
+
 
   if (!user) {
     return next({ status: 401, message: 'You shall not pass!' })
@@ -40,7 +40,8 @@ export async function login(req, res, next) {
 }
 
 
-export function getUser(req,res){
+export async function getUser(req,res){
+  // await new Promise(r => setTimeout(r, 4000))
   const user = req.user
   res.send(user)
 }

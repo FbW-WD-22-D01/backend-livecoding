@@ -1,5 +1,6 @@
 import './Login.css'
 import * as React from 'react'
+import UserDetails from './UserDetails'
 
 export default function Login () {
   const [email, setEmail] = React.useState('')
@@ -28,12 +29,7 @@ export default function Login () {
   }
 
   if(token) {
-    return (
-      <>
-        <h3>Wilkommen</h3>
-        <p>Dein Token ist {`"${token}"`}</p>
-      </>
-    )
+    return <UserDetails token={token}/>
   }
 
   return (
