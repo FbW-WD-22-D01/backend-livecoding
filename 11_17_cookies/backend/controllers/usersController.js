@@ -20,6 +20,7 @@ export async function createUser (req, res) {
 
 export async function login(req, res, next) {
   const user = await User.findByEmail(req.body.email)
+  console.log(user)
 
   if (!user) {
     return next({ status: 401, message: 'You shall not pass!' })
