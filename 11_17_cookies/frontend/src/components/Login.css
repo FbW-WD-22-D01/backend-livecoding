@@ -18,3 +18,9 @@
 .Login .error {
   color: red;
 }
+
+.Login .register-switch {
+  color: blue;
+  margin-top: 10px;
+  cursor: pointer;
+}

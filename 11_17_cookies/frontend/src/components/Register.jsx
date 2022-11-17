@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './Register.css'
 
-export default function Register () {
+export default function Register (props) {
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
@@ -60,6 +60,8 @@ export default function Register () {
       {errors.map(error => (
         <div key={error} className='error'>{error}</div>
       ))}
+
+      <label className='login-switch' onClick={props.onLoginSwitch}>Ich habe bereits einen Account</label>
     </form>
   )
 }

@@ -2,7 +2,7 @@ import './Login.css'
 import * as React from 'react'
 import UserDetails from './UserDetails'
 
-export default function Login () {
+export default function Login (props) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [errors, setErrors] = React.useState([])
@@ -41,6 +41,8 @@ export default function Login () {
       {errors.map(error => (
         <div key={error} className='error'>{error}</div>
       ))}
+
+      <label className='register-switch' onClick={props.onRegisterSwitch}>noch nicht registriert?</label>
     </form>
   )
 }
