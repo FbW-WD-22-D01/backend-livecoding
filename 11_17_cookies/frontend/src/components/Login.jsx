@@ -6,7 +6,6 @@ export default function Login (props) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [errors, setErrors] = React.useState([])
-  const [token, setToken] = React.useState('')
 
   const submit = async (e) => {
     e.preventDefault()
@@ -21,15 +20,12 @@ export default function Login (props) {
 
     if(response.status === 200) {
       const token = await response.text()
-      setToken(token)
+      localStorage.setItem('login-token', token)
+      props.setToken(token)
     }
     else {
       setErrors(['Email oder Passwort ist falsch'])
     }
-  }
-
-  if(token) {
-    return <UserDetails token={token}/>
   }
 
   return (

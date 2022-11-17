@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './UserDetails.css'
 
-export default function UserDetails ({token}) {
+export default function UserDetails (props) {
   const [user, setUser] = React.useState(null)
   const [loading, setLoading] = React.useState(true)
   const [isLoggedIn, setIsLoggedIn] = React.useState(true)
@@ -10,7 +10,7 @@ export default function UserDetails ({token}) {
   React.useEffect(() => {
     fetch('http://localhost:3001/user',{
       headers: {
-        'x-authorization': token
+        'x-authorization': props.token
       }
     }).then(async response => {
       if(response.status === 200) {
@@ -25,7 +25,12 @@ export default function UserDetails ({token}) {
       }
       setLoading(false)
     })
-  }, [token])
+  }, [props.token])
+
+  const logout = () => {
+    localStorage.removeItem('login-token')
+    props.setToken(null)
+  }
 
   if(loading) return (
     <div className='UserDetails'>
@@ -36,6 +41,7 @@ export default function UserDetails ({token}) {
   if(!isLoggedIn) return (
     <div className='UserDetails'>
       <h3>Du bist nicht eingeloggt</h3>
+      <button onClick={logout}>zum Login</button>
     </div>
   )
 
