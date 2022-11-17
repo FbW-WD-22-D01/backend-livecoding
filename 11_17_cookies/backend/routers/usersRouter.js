@@ -7,8 +7,8 @@ import * as validations from '../lib/userValidation.js'
 const app = express.Router()
 
 app.get('/', auth, controller.getUser)
-app.post('/register',  controller.createUser)
-app.post('/login', controller.login)
+app.post('/register', ...validations.register,  controller.createUser)
+app.post('/login', ...validations.login, controller.login)
 
 
 export default app
