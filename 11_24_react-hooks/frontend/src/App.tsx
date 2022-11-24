@@ -1,11 +1,17 @@
 import './App.css'
+import ComponentA from './components/ComponentA'
+import ComponentB from './components/ComponentB'
+import { SloganProvider } from './hooks/useSlogan'
 
 function App() {
 
   return (
-    <div className="App">
-      <h1>React-Hooks</h1>
-    </div>
+    <SloganProvider>
+      <div className="App">
+        <ComponentA/>
+        <ComponentB/>
+      </div>
+    </SloganProvider>
   )
 }
 
