@@ -1,6 +1,7 @@
 import './Register.css'
 import useUser from '../hooks/useUser'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Register () {
   const user = useUser()
@@ -8,8 +9,6 @@ export default function Register () {
   const [password, setPassword] = React.useState('')
   const [name, setName] = React.useState('')
   const [error, setError] = React.useState(false)
-
-  console.log(user)
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault()
@@ -46,6 +45,7 @@ export default function Register () {
         onChange={e => setName(e.target.value)}
       />
       <button>Send</button>
+      <Link to='/login'>ich will mich einloggen</Link>
       {error && <p className='error'>Etwas ist schief gelaufen</p>}
     </form>
   )

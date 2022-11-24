@@ -1,6 +1,7 @@
 import './Login.css'
 import * as React from 'react'
 import useUser from '../hooks/useUser'
+import { Link } from 'react-router-dom'
 
 export default function Login () {
   const [email, setEmail] = React.useState('')
@@ -37,6 +38,7 @@ export default function Login () {
         onChange={e => setPassword(e.target.value)}
       />
       <button>Send</button>
+      <Link to='/register'>ich will mich registrieren</Link>
       {error && <p className='error'>Etwas ist schief gelaufen!</p>}
     </form>
   )

@@ -4,6 +4,7 @@ import * as React from 'react'
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'http://localhost:3001'
 
+
 type User = {
   name: string
   email: string
@@ -16,16 +17,24 @@ type UserHook = {
   logout: () => void
 }
 
-export default function useUser ():UserHook {
+const Context = React.createContext<UserHook>({
+  user: null,
+  register: async () => false,
+  login: async () => false,
+  logout: () => null,
+})
+
+export function UserProvider (props:{children:React.ReactElement}) {
   const [user, setUser] = React.useState<null | User>(null)
 
   React.useEffect(() => {
+    console.log('fetch user')
     axios.get('/user')
       .then(response => setUser(response.data))
       .catch(() => null)
   }, [])
 
-  return {
+  const context:UserHook = {
     user: user,
     register: async (email, password, name) => {
       // fetch('http://localhost:3001/user/register', {
@@ -68,4 +77,15 @@ export default function useUser ():UserHook {
 
     }
   }
+
+  return (
+    <Context.Provider value={context}>
+      {props.children}
+    </Context.Provider>
+  )
 }
+
+export default function useUser () {
+  return React.useContext(Context)
+}
+
