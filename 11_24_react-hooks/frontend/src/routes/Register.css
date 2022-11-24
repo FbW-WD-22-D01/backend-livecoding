@@ -1,0 +1,23 @@
+
+.Register {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+
+  padding: 50px 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.Register > input {
+  padding: 10px;
+}
+
+.Register > label {
+  margin-top: 10px;
+}
+
+.Register > button {
+  margin-top: 20px;
+}
