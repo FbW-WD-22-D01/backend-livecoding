@@ -9,6 +9,8 @@ export default function Register () {
   const [name, setName] = React.useState('')
   const [error, setError] = React.useState(false)
 
+  console.log(user)
+
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault()
     const success = await user.register(email, password, name)

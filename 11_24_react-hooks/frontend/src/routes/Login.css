@@ -21,3 +21,7 @@
 .Login > button {
   margin-top: 20px;
 }
+
+.Login > .error {
+  color: red;
+}
