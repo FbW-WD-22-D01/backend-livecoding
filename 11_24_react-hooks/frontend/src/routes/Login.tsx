@@ -1,13 +1,14 @@
 import './Login.css'
 import * as React from 'react'
 import useUser from '../hooks/useUser'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Login () {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const user = useUser()
   const [error, setError] = React.useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault()
@@ -15,6 +16,9 @@ export default function Login () {
 
     if(!success) {
       setError(true)
+    }
+    else {
+      navigate('/')
     }
   }
 

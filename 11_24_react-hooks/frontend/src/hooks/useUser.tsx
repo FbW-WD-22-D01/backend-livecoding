@@ -12,6 +12,7 @@ type User = {
 
 type UserHook = {
   user: null | User
+  loading: boolean
   register: (email:string, password:string, name:string) => Promise<boolean>
   login: (email:string, password:string) => Promise<boolean>
   logout: () => void
@@ -19,6 +20,7 @@ type UserHook = {
 
 const Context = React.createContext<UserHook>({
   user: null,
+  loading: false,
   register: async () => false,
   login: async () => false,
   logout: () => null,
@@ -26,16 +28,19 @@ const Context = React.createContext<UserHook>({
 
 export function UserProvider (props:{children:React.ReactElement}) {
   const [user, setUser] = React.useState<null | User>(null)
+  const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
     console.log('fetch user')
     axios.get('/user')
       .then(response => setUser(response.data))
       .catch(() => null)
+      .finally(() => setLoading(false))
   }, [])
 
   const context:UserHook = {
     user: user,
+    loading: loading,
     register: async (email, password, name) => {
       // fetch('http://localhost:3001/user/register', {
       //   method: 'POST',
@@ -74,7 +79,8 @@ export function UserProvider (props:{children:React.ReactElement}) {
       }
     },
     logout: async () => {
-
+      await axios.get('/user/logout')
+      setUser(null)
     }
   }
 
