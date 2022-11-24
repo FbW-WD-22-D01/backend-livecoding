@@ -21,3 +21,7 @@
 .Register > button {
   margin-top: 20px;
 }
+
+.Register > .error {
+  color: red;
+}

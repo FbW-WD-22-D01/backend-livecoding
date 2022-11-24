@@ -31,11 +31,13 @@ app.use('/user', usersRouter)
 app.use('/cart', cartRouter)
 
 app.use((req, res, next) => {
+  console.log('call')
   next({
     status: 404,
     message: 'not-found'
   })
 })
+
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, next) => {

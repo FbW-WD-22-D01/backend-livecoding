@@ -49,8 +49,6 @@ Schema.methods.toJSON = function (){
     name: user.name,
     email: user.email,
     _id: user._id,
-    tokens: user.tokens
-
   }
   return result
 }
