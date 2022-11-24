@@ -31,7 +31,6 @@ export function UserProvider (props:{children:React.ReactElement}) {
   const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
-    console.log('fetch user')
     axios.get('/user')
       .then(response => setUser(response.data))
       .catch(() => null)
