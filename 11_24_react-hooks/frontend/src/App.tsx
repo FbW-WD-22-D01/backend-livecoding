@@ -1,17 +1,20 @@
 import './App.css'
-import ComponentA from './components/ComponentA'
-import ComponentB from './components/ComponentB'
-import { SloganProvider } from './hooks/useSlogan'
+import { Routes, Route } from 'react-router-dom'
+import Login from './routes/Login'
+import Register from './routes/Register'
+import Account from './routes/Account'
+
 
 function App() {
 
   return (
-    <SloganProvider>
-      <div className="App">
-        <ComponentA/>
-        <ComponentB/>
-      </div>
-    </SloganProvider>
+    <div className="App">
+      <Routes>
+        <Route path='/' element={<Account />} />
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+      </Routes>
+    </div>
   )
 }
 
