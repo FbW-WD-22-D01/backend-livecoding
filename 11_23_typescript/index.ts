@@ -59,7 +59,6 @@ let obj2:Account = {
   friends: [],
 }
 
-type LogUserReturn = null | User
 
 
 function logUser (obj:Account) {
@@ -75,6 +74,8 @@ function logUser (obj:Account) {
   }
 }
 
+type LogUserReturn = ReturnType<typeof logUser>
+
 const result = logUser(obj2)
 const timestamp = obj1.timestamp
 const myName = obj1.user?.name
@@ -88,3 +89,21 @@ for(const friend of obj1.friends) {
   console.log(friend.name)
 }
 
+// own setState implementation via Genrerics
+
+function setState <MyGeneric>(value:MyGeneric) {
+  return value
+}
+
+const myValue = setState<User>({
+  name: 'Peter',
+  age: 10
+})
+
+const user = { name: 'User', age: 12 }
+
+type NewUser = typeof user
+
+const promise = Promise.resolve('foo')
+
+type PromiseValue = Awaited<typeof promise>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 export default function Slogan () {
-  const [slogan, setSlogan] = React.useState<null | string>(null)
+  const [slogan, setSlogan] = React.useState<null | Slogan>(null)
 
   React.useEffect(() => {
     fetchSlogan().then(result => {
@@ -13,11 +13,15 @@ export default function Slogan () {
     return <p>loading...</p>
   }
 
-  return <p>{slogan}</p>
+  return <p>{slogan.message}</p>
 }
+
+type Slogan = Awaited<ReturnType<typeof fetchSlogan>>
 
 async function fetchSlogan () {
   await new Promise(r => setTimeout(r, 2000)) // wait 2 seconds
 
-  return 'Typescript Rocks'
+  return {
+    message: 'Typescript Rocks'
+  }
 }
