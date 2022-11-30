@@ -12,6 +12,7 @@ type User = {
 
 type UserHook = {
   user: null | User
+  /** as long as we do not know if we are logged in or not, loading ist true */
   loading: boolean
   register: (email:string, password:string, name:string) => Promise<boolean>
   login: (email:string, password:string) => Promise<boolean>
